@@ -23,9 +23,8 @@ const dogImage = async () => {
 
 // Gender by name
 const genderName = async (userName) => {
-    genderURL = genderURL + userName;
     try {
-        const res = await fetch(genderURL);
+        const res = await fetch(genderURL + userName);
         const data = await res.json();
         return data.gender;
     }
@@ -36,9 +35,8 @@ const genderName = async (userName) => {
 
 // Age by name
 const ageName = async (userName) => {
-    ageURL = ageURL + userName;
     try {
-        const res = await fetch(ageURL);
+        const res = await fetch(ageURL + userName);
         const data = await res.json();
         return data.age;
     }
@@ -49,9 +47,8 @@ const ageName = async (userName) => {
 
 // Nationalities by name
 const nationalityName = async (userName) => {
-    nationalityURL = nationalityURL + userName;
     try {
-        const res = await fetch(nationalityURL);
+        const res = await fetch(nationalityURL + userName);
         const data = await res.json(); 
         return [data.country[0].country_id, data.country[1].country_id];
     }
@@ -76,7 +73,7 @@ document.getElementById('submit').onclick = async (e) => {
     const gender = await genderName(inputName.value);
     const pageGender = document.getElementById('gender');
     pageGender.innerText = gender;
-
+    
     // Add age to profile
     const age = await ageName(inputName.value);
     const pageAge = document.getElementById('age');
@@ -85,7 +82,7 @@ document.getElementById('submit').onclick = async (e) => {
     // Add nationalities to profile
     const nationalities = await nationalityName(inputName.value);
     const pageNationalities = document.getElementById('nationalities');
-    pageNationalities.innerText = `${nationalities[0]} ,${nationalities[1]}`;
+    pageNationalities.innerText = `${nationalities[0]}, ${nationalities[1]}`;
 
     // Clear input
     document.getElementById("submit-name").value = '';
