@@ -35,11 +35,24 @@ const genderName = async (userName) => {
     })
 }
 
+// Age by name
+const ageName = async (userName) => {
+    ageURL = ageURL + userName;
+    fetch(ageURL).then( (r) =>
+        r.json()
+    ).then((data) => {
+        return data.age;
+    }).catch((err)=>{
+        console.log(err);
+    })
+}
+
 // Add image on load
 window.onload = dogImage;
 
 // Submit Name
 document.getElementById('submit').onclick = function () {
     const inputName = document.getElementById('name').value;
-    const age = genderName(inputName);
+    const gender = genderName(inputName);
+    const age = ageName(inputName);
 }
