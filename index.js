@@ -60,6 +60,13 @@ const nationalityName = async (userName) => {
 // Add image on load
 window.onload = dogImage;
 
+// Add emptyspace restrication
+document.getElementById('submit-name').addEventListener("keypress",(e)=>{
+    if (e.key == ' '){
+        e.returnValue = '';
+    }
+})
+
 // Submit Name
 document.getElementById('submit').onclick = async (e) => {
     e.preventDefault();
