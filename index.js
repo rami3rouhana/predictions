@@ -69,8 +69,15 @@ window.onload = dogImage;
 document.getElementById('submit').onclick = async (e) => {
     e.preventDefault();
     const inputName = document.getElementById('name').value;
+    const pageName = document.getElementById('name');
+    pageName.innerText = inputName;
     const gender = await genderName(inputName);
+    const pageGender = document.getElementById('gender');
+    pageGender.innerText = gender;
     const age = await ageName(inputName);
-    const nationality = await nationalityName(inputName);
-    debugger
+    const pageAge = document.getElementById('age');
+    pageAge.innerText = age;
+    const nationalities = await nationalityName(inputName);
+    const pageNationalities = document.getElementById('nationalities');
+    pageNationalities.innerText = `${nationalities[0]} ,${nationalities[1]}`;
 }
