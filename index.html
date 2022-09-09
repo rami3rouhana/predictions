@@ -9,10 +9,22 @@
 </head>
 <body>
     <div class="main">
-        <img id="dog-image" alt="Cute Dog"/>
-        <label for="name">Full name</label>
-        <input id="name"/>
-        <button id="submit">Submit</button>
+
+        <div class="profile">
+            <img id="dog-image" alt="Cute Dog"/>
+            <div class="profile-info">
+                <ul>
+                    <li>Age: <span id="age"></span></li>
+                    <li>Gender: <span id="gender"></span></li>
+                    <li>Nationalities: <span id="nationalities"></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="submission">
+            <label for="name">Full name</label>
+            <input id="name"/>
+            <button id="submit">Submit</button>
+        </div>
     </div>
 </body>
 <script src="index.js"></script>
