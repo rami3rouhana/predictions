@@ -7,8 +7,6 @@ const dogUrl = "https://dog.ceo/api/breeds/image/random";
 // Variable
 const image = document.getElementById('dog-image');
 
-// Fuctions
-
 // Random dog image
 const dogImage = async () => {
     const imgSrc = "./404.jpg"
@@ -70,22 +68,25 @@ document.getElementById('submit').onclick = async (e) => {
     e.preventDefault();
 
     // Add name to profile
-    const inputName = document.getElementById('submit-name').value;
+    const inputName = document.getElementById('submit-name');
     const pageName = document.getElementById('name');
-    pageName.innerText = inputName;
+    pageName.innerText = inputName.value;
 
     // Add gender to profile
-    const gender = await genderName(inputName);
+    const gender = await genderName(inputName.value);
     const pageGender = document.getElementById('gender');
     pageGender.innerText = gender;
 
     // Add age to profile
-    const age = await ageName(inputName);
+    const age = await ageName(inputName.value);
     const pageAge = document.getElementById('age');
     pageAge.innerText = age;
 
     // Add nationalities to profile
-    const nationalities = await nationalityName(inputName);
+    const nationalities = await nationalityName(inputName.value);
     const pageNationalities = document.getElementById('nationalities');
     pageNationalities.innerText = `${nationalities[0]} ,${nationalities[1]}`;
+
+    // Clear input
+    document.getElementById("submit-name").value = '';
 }
