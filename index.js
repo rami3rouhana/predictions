@@ -4,7 +4,7 @@ let ageURL = " https://api.agify.io/?name=";
 let nationalityURL = "https://api.nationalize.io/?name=";
 const dogUrl = "https://dog.ceo/api/breeds/image/random";
 
-// Variables
+// Variable
 const image = document.getElementById('dog-image');
 
 // Fuctions
@@ -68,15 +68,23 @@ window.onload = dogImage;
 // Submit Name
 document.getElementById('submit').onclick = async (e) => {
     e.preventDefault();
-    const inputName = document.getElementById('name').value;
+
+    // Add name to profile
+    const inputName = document.getElementById('submit-name').value;
     const pageName = document.getElementById('name');
     pageName.innerText = inputName;
+
+    // Add gender to profile
     const gender = await genderName(inputName);
     const pageGender = document.getElementById('gender');
     pageGender.innerText = gender;
+
+    // Add age to profile
     const age = await ageName(inputName);
     const pageAge = document.getElementById('age');
     pageAge.innerText = age;
+
+    // Add nationalities to profile
     const nationalities = await nationalityName(inputName);
     const pageNationalities = document.getElementById('nationalities');
     pageNationalities.innerText = `${nationalities[0]} ,${nationalities[1]}`;
