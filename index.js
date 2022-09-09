@@ -47,6 +47,19 @@ const ageName = async (userName) => {
     })
 }
 
+// Nationalities by name
+const nationalityName = async (userName) => {
+    nationalityURL = nationalityURL + userName;
+    fetch(nationalityURL).then( (r) =>
+        r.json()
+    ).then((data) => {
+        const nations = [data.country[0].country_id, data.country[1].country_id];
+        return nations;
+    }).catch((err)=>{
+        console.log(err);
+    })
+}
+
 // Add image on load
 window.onload = dogImage;
 
@@ -55,4 +68,5 @@ document.getElementById('submit').onclick = function () {
     const inputName = document.getElementById('name').value;
     const gender = genderName(inputName);
     const age = ageName(inputName);
+    const nationality = nationalityName(inputName);
 }
