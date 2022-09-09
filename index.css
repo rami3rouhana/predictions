@@ -17,3 +17,22 @@
     margin-top: 20px;
     box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
   }
+
+  button{
+    text-align: center;
+    border-radius: 50px;
+    height: 35px;
+    background-color: #222831;
+    border-color: #222831;
+    color: white;
+  }
+
+  button:hover{
+    text-align: center;
+    border-radius: 50px;
+    height: 35px;
+    background-color: #b841c8;
+    border-color: #222831;
+    color: white;
+    box-shadow: 0 5px 50px rgba(235, 25, 110, 1);
+  }
