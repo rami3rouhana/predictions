@@ -36,3 +36,21 @@
     color: white;
     box-shadow: 0 5px 50px rgba(235, 25, 110, 1);
   }
+  
+  input{
+    text-align: center;
+    border-radius: 50px;
+    height: 30px;
+    border: #222831;
+  }
+
+  input:focus::placeholder{
+    color: transparent;
+  }
+
+  input:focus{
+    padding-left: 10px;
+    text-align: left;
+    background-color: #222831;
+    color: #fff;
+  }
