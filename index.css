@@ -16,7 +16,12 @@ body{
     justify-content: space-between;
     color: white;
   }
-  .main img {
+
+.main:hover{
+  background-image: url(/images/stars.png);
+}
+
+  .dog {
     height: 160px;
     width: 160px;
     border-radius: 50%;
@@ -26,11 +31,14 @@ body{
   }
 
   button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
+    font-size: large;
+    font-weight: bold;
     text-align: center;
     border-radius: 50px;
     height: 35px;
     background-color: #222831;
-    border-color: #222831;
+    border-color: #22283100;
     color: white;
   }
 
@@ -39,12 +47,16 @@ body{
     border-radius: 50px;
     height: 35px;
     background-color: #b841c8;
-    border-color: #222831;
+    border-color: #22283100;
     color: white;
     box-shadow: 0 5px 50px rgba(235, 25, 110, 1);
+    background-image: radial-gradient(#222831,#b841c8,#222831)
   }
   
   input{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
+    font-size: large;
+    font-weight: bold;
     text-align: center;
     border-radius: 50px;
     height: 30px;
@@ -58,10 +70,10 @@ body{
   }
 
   input:focus{
-    padding-left: 10px;
     text-align: left;
     background-color: #222831;
     color: #fff;
+    background-image: url(/images/stars.png);
   }
 
   li{
@@ -69,4 +81,11 @@ body{
     list-style: none;
     padding-right: 250px;
     width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .unicorn{
+    width: 40px;
+    height: 30px;
+    margin-right: 4px;
   }
