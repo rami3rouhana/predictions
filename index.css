@@ -1,3 +1,12 @@
+  @keyframes animatedBackground {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }
+
 body{
     display: flex;
     flex-direction: column;
@@ -6,7 +15,7 @@ body{
 }
 
 .main {
-    width: 25%;
+    min-width: 25%;
     background-color: #222831;
     height: 37rem;
     border-radius: 25px;
@@ -17,8 +26,9 @@ body{
     color: white;
   }
 
-.main:hover{
+.main{
   background-image: url(/images/stars.png);
+  animation: animatedBackground 10s linear infinite alternate;
 }
 
   .dog {
@@ -50,7 +60,7 @@ body{
     border-color: #22283100;
     color: white;
     box-shadow: 0 5px 50px rgba(235, 25, 110, 1);
-    background-image: radial-gradient(#222831,#b841c8,#222831)
+    background-image: radial-gradient(#222831,#b841c8,#222831);
   }
   
   input{
@@ -74,6 +84,7 @@ body{
     background-color: #222831;
     color: #fff;
     background-image: url(/images/stars.png);
+    animation: animatedBackground 10s linear infinite alternate;
   }
 
   li{
