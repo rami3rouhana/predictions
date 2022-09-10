@@ -4,12 +4,10 @@ let ageURL = " https://api.agify.io/?name=";
 let nationalityURL = "https://api.nationalize.io/?name=";
 const dogUrl = "https://dog.ceo/api/breeds/image/random";
 
-// Variable
-const image = document.getElementById('dog-image');
-
 // Random dog image
 const dogImage = async () => {
     const imgSrc = "./404.jpg"
+    const image = document.getElementById('dog-image');
     try{
         const res = await fetch(dogUrl);
         const data = await res.json();
@@ -75,6 +73,11 @@ document.getElementById('submit').onclick = async (e) => {
     const inputName = document.getElementById('submit-name');
     const pageName = document.getElementById('name');
     pageName.innerText = inputName.value;
+
+    // Add empty restriction
+    if(inputName.value == ""){
+        return false;
+    }
 
     // Add gender to profile
     const gender = await genderName(inputName.value);
