@@ -75,7 +75,6 @@ document.getElementById('submit').onclick = async (e) => {
         return false;
     }
 
-
     // Add empty restriction
     if(inputName.value == ""){
         return false;
@@ -95,6 +94,13 @@ document.getElementById('submit').onclick = async (e) => {
     const nationalities = await nationalityName(inputName.value);
     const pageNationalities = document.getElementById('nationalities');
     pageNationalities.innerText = `${nationalities[0]}, ${nationalities[1]}`;
+
+    // Signup using localstorage
+    localStorage.setItem(inputName, JSON.stringify({
+        age,
+        gender,
+        nationalities:[nationalities[0], nationalities[1]]
+    }))
 
     // Clear input
     document.getElementById("submit-name").value = '';
