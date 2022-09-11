@@ -9,9 +9,8 @@ const dogImage = async () => {
     const imgSrc = "./404.jpg"
     const image = document.getElementById('dog-image');
     try{
-        const res = await fetch(dogUrl);
-        const data = await res.json();
-        image.setAttribute("src", data.message);
+        const res = await axios(dogUrl);
+        image.setAttribute("src", res.data.message);
     }
     catch(err){
         image.setAttribute("src", imgSrc)
@@ -22,9 +21,8 @@ const dogImage = async () => {
 // Gender by name
 const genderName = async (userName) => {
     try {
-        const res = await fetch(genderURL + userName);
-        const data = await res.json();
-        return data.gender;
+        const res = await axios(genderURL + userName);
+        return res.data.gender;
     }
     catch (err) {
         console.log(err);
@@ -34,9 +32,8 @@ const genderName = async (userName) => {
 // Age by name
 const ageName = async (userName) => {
     try {
-        const res = await fetch(ageURL + userName);
-        const data = await res.json();
-        return data.age;
+        const res = await axios(ageURL + userName);
+        return res.data.age;
     }
     catch (err) {
         console.log(err);
@@ -46,9 +43,8 @@ const ageName = async (userName) => {
 // Nationalities by name
 const nationalityName = async (userName) => {
     try {
-        const res = await fetch(nationalityURL + userName);
-        const data = await res.json(); 
-        return [data.country[0].country_id, data.country[1].country_id];
+        const res = await axios(nationalityURL + userName); 
+        return [res.data.country[0].country_id, res.data.country[1].country_id];
     }
     catch (err) {
         console.log(err);
