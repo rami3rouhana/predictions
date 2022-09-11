@@ -67,7 +67,6 @@ const activityName = async () => {
 // Ip by name
 const userIp = async () => {
     try {
-        debugger
         const res = await axios(ipUrl); 
         return [res.data.ip];
     }
