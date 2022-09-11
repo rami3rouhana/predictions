@@ -24,7 +24,7 @@ const dogImage = async () => {
 const genderName = async (userName) => {
     try {
         const res = await axios(genderURL + userName);
-        return res.data.gender;
+        return `Your current Ip: ${res.data.gender}`;
     }
     catch (err) {
         console.log(err);
