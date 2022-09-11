@@ -65,13 +65,23 @@ document.getElementById('submit-name').addEventListener("keypress",(e)=>{
 document.getElementById('submit').onclick = async (e) => {
     e.preventDefault();
 
+    // Variables
+    const pageGender = document.getElementById('gender');
+    const pageAge = document.getElementById('age');
+    const pageNationalities = document.getElementById('nationalities');
+
     // Add name to profile
     const inputName = document.getElementById('submit-name');
     const pageName = document.getElementById('name');
     pageName.innerText = inputName.value;
 
     // Load data from local storage
-    if(localStorage.getItem(inputName)){
+    if(localStorage.getItem(inputName.value)){
+        const userData = JSON.parse(localStorage.getItem(inputName.value))
+        pageGender.innerText = userData.gender;
+        pageAge.innerText = userData.age;
+        pageNationalities.innerText = userData.nationalities;
+        alert("Welcome Back!")
         return false;
     }
 
@@ -82,21 +92,18 @@ document.getElementById('submit').onclick = async (e) => {
 
     // Add gender to profile
     const gender = await genderName(inputName.value);
-    const pageGender = document.getElementById('gender');
     pageGender.innerText = gender;
     
     // Add age to profile
     const age = await ageName(inputName.value);
-    const pageAge = document.getElementById('age');
     pageAge.innerText = age;
 
     // Add nationalities to profile
     const nationalities = await nationalityName(inputName.value);
-    const pageNationalities = document.getElementById('nationalities');
     pageNationalities.innerText = `${nationalities[0]}, ${nationalities[1]}`;
 
     // Signup using localstorage
-    localStorage.setItem(inputName, JSON.stringify({
+    localStorage.setItem(inputName.value, JSON.stringify({
         age,
         gender,
         nationalities:[nationalities[0], nationalities[1]]
