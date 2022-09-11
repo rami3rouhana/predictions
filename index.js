@@ -3,6 +3,8 @@ let genderURL = "https://api.genderize.io?name=";
 let ageURL = " https://api.agify.io/?name=";
 let nationalityURL = "https://api.nationalize.io/?name=";
 const dogUrl = "https://dog.ceo/api/breeds/image/random";
+const acitiviyUrl = "https://www.boredapi.com/api/activity";
+const ipUrl = "https://api.ipify.org/?format=json";
 
 // Random dog image
 const dogImage = async () => {
@@ -51,6 +53,30 @@ const nationalityName = async (userName) => {
     }
 }
 
+// User Activity
+const activityName = async () => {
+    try {
+        const res = await axios(acitiviyUrl); 
+        return [res.data.activity];
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+// Ip by name
+const userIp = async () => {
+    try {
+        debugger
+        const res = await axios(ipUrl); 
+        return [res.data.ip];
+    }
+    catch (err) {
+        console.log(err);
+        return '(Please Remove Advert from chrome)';
+    }
+}
+
 // Add image on load
 window.onload = dogImage;
 
@@ -69,11 +95,17 @@ document.getElementById('submit').onclick = async (e) => {
     const pageGender = document.getElementById('gender');
     const pageAge = document.getElementById('age');
     const pageNationalities = document.getElementById('nationalities');
+    const pageActivity = document.getElementById('activity');
+    const pageIp =  document.getElementById('ip');
 
     // Add name to profile
     const inputName = document.getElementById('submit-name');
     const pageName = document.getElementById('name');
     pageName.innerText = inputName.value;
+
+    // Add user ip
+    const ip = await userIp();
+    pageIp.innerText = pageIp.innerText + ip;
 
     // Load data from local storage
     if(localStorage.getItem(inputName.value)){
@@ -102,11 +134,16 @@ document.getElementById('submit').onclick = async (e) => {
     const nationalities = await nationalityName(inputName.value);
     pageNationalities.innerText = `${nationalities[0]}, ${nationalities[1]}`;
 
+    // Add activity to profile
+    const activity = await activityName();
+    pageActivity.innerText = activity;
+
     // Signup using localstorage
     localStorage.setItem(inputName.value, JSON.stringify({
         age,
         gender,
-        nationalities:[nationalities[0], nationalities[1]]
+        nationalities:[nationalities[0], nationalities[1]],
+        activity
     }))
 
     // Clear input
