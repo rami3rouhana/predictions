@@ -70,6 +70,12 @@ document.getElementById('submit').onclick = async (e) => {
     const pageName = document.getElementById('name');
     pageName.innerText = inputName.value;
 
+    // Load data from local storage
+    if(localStorage.getItem(inputName)){
+        return false;
+    }
+
+
     // Add empty restriction
     if(inputName.value == ""){
         return false;
